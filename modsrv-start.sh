@@ -1,4 +1,4 @@
-source ./.modsrv-conf.sh
+source "$(dirname "${BASH_SOURCE[0]}")"/.modsrv-conf.sh
 
 if [ $# -lt 1 ]; then
   echo "Please provide one argument."
@@ -16,4 +16,4 @@ docker run -it -d --rm --name modsrv-$1 \
 --network minecraft \
 "eclipse-temurin:$(cat "$SERVER_FILES_DIR/$1/.java-version")-jre-alpine" /bin/sh -c "cd /minecraft-server && /minecraft-server/$(cat "$SERVER_FILES_DIR/$1/.start-script-name")"
 
-./modsrv-create-session.sh $1
+"$(dirname "${BASH_SOURCE[0]}")"/modsrv-create-session.sh $1

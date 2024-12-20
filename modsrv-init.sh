@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./.modsrv-conf.sh
+source "$(dirname "${BASH_SOURCE[0]}")"/.modsrv-conf.sh
 
 if [ $# -lt 5 ]; then
   echo "Please provide four arguments."
@@ -22,4 +22,4 @@ echo "$2" > "$SERVER_FILES_DIR/$1/.java-version"
 echo "$3" > "$SERVER_FILES_DIR/$1/.mc-router-host"
 echo "$4" > "$SERVER_FILES_DIR/$1/.start-script-name"
 
-./modsrv-start.sh $1
+"$(dirname "${BASH_SOURCE[0]}")"/modsrv-start.sh $1
