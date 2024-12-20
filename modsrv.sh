@@ -5,17 +5,19 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
+SCRIPT_FOLDER="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
 if [[ "$1" == "init" ]]; then
   shift
-  "$(dirname "${BASH_SOURCE[0]}")"/modsrv-init.sh $@
+  $SCRIPT_FOLDER/modsrv-init.sh $@
 fi
 
 if [[ "$1" == "start" ]]; then
   shift
-  "$(dirname "${BASH_SOURCE[0]}")"/modsrv-start.sh $@
+  $SCRIPT_FOLDER/modsrv-start.sh $@
 fi
 
 if [[ "$1" == "create-session" ]]; then
   shift
-  "$(dirname "${BASH_SOURCE[0]}")"/modsrv-create-session.sh $@
+  $SCRIPT_FOLDER/modsrv-create-session.sh $@
 fi
